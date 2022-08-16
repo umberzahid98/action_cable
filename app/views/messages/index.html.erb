@@ -1,0 +1,17 @@
+<h1>Chat Box</h1>
+<div id="chatbox" style="height:250px; border:solid 1px; overflow-y: scroll" >
+<% @messages.each do |message|%>
+  <%= render 'messages/message', message: message %>
+<%end%>
+</div>
+<br>
+<%= form_for @message, url: messages_create_path(@message) do |f|%>
+    <%= f.label :name%>
+    <%= f.text_field :sender, class: "form-control message_sender"%><br><br>
+    <%= f.text_area :body, placeholder: "Message..",  class: "form-control message_body"%>
+    <br>
+    <%= f.submit "Create", class: "btn btn-primary"%>
+
+<%end%>
+
+
